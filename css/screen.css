@@ -39,6 +39,13 @@
     --global-color-neutral-xxx-dark: #35374d;
     --global-color-neutral-xxxx-dark: #20223a;
 
+    --global-input-backgroundColor: White;
+    --global-input-color: var(--global-color-neutral-xxxx-dark);
+    --global-input-borderColor: var(--global-color-neutral-xxx-light);
+    --global-input-hover-borderColor: var(--global-color-neutral-xx-light);
+    --global-input-focus-borderColor: var(--global-color-alpha);
+    --global-input-boxShadow: 0 0 0 3px var(--global-color-alpha-x-transparent);
+
     /* border stuff */
     --global-borderRadius: 3px;
     --global-borderWidth: 1px;
@@ -47,15 +54,22 @@
     --global-transitionTiming-alpha: .1s ease-out;
 
     /* Baseline settings */
-    --global-baseline: 8px;         
-    --global-whitespace: calc(var(--global-baseline) * 3); /* = 24px */
+    --global-baseline: 8px;
+    --global-whitespace: calc(var(--global-baseline) * 3);
+    /* = 24px */
 
-    --global-whitespace-xs: calc(var(--global-baseline) / 2); /* = 4px */
-    --global-whitespace-sm: calc(var(--global-baseline) * 1); /*  = 8px */
-    --global-whitespace-md: calc(var(--global-baseline) * 2); /*  = 16px */
-    --global-whitespace-lg: calc(var(--global-baseline) * 4); /*  = 32px */
-    --global-whitespace-xl: calc(var(--global-whitespace) * 2); /*  = 48px */
-    --global-whitespace-xxl: calc(var(--global-whitespace) * 3); /*  = 72px */
+    --global-whitespace-xs: calc(var(--global-baseline) / 2);
+    /* = 4px */
+    --global-whitespace-sm: calc(var(--global-baseline) * 1);
+    /*  = 8px */
+    --global-whitespace-md: calc(var(--global-baseline) * 2);
+    /*  = 16px */
+    --global-whitespace-lg: calc(var(--global-baseline) * 4);
+    /*  = 32px */
+    --global-whitespace-xl: calc(var(--global-whitespace) * 2);
+    /*  = 48px */
+    --global-whitespace-xxl: calc(var(--global-whitespace) * 3);
+    /*  = 72px */
 }
 
 /*------------------------------------*\
@@ -76,7 +90,7 @@ html {
     background-color: var(--global-color-neutral-xxxx-light);
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;    
+    -moz-osx-font-smoothing: grayscale;
 }
 
 *,
@@ -278,7 +292,8 @@ input::placeholder {
 .o-container {
     margin-left: auto;
     margin-right: auto;
-    max-width: 79.5em; /* 79.5 * 16px = 1272 */
+    max-width: 79.5em;
+    /* 79.5 * 16px = 1272 */
     width: 100%;
 }
 
@@ -292,19 +307,20 @@ input::placeholder {
     position: relative;
 }
 
-.o-section + .o-section {
+.o-section+.o-section {
     padding-top: var(--global-whitespace);
 }
 
 @media (min-width: 768px) {
-    .o-section--lg + .o-section--lg,
-    .o-section--xl + .o-section--xl {
+
+    .o-section--lg+.o-section--lg,
+    .o-section--xl+.o-section--xl {
         padding-top: var(--global-whitespace-lg);
     }
 }
 
 @media (min-width: 992px) {
-    .o-section--xl + .o-section--xl {
+    .o-section--xl+.o-section--xl {
         padding-top: var(--global-whitespace-xxl);
     }
 }
@@ -334,7 +350,7 @@ input::placeholder {
     margin: 0 -12px;
 }
 
-.o-layout--gutter > .o-layout__item {
+.o-layout--gutter>.o-layout__item {
     padding: 0 12px;
 }
 
@@ -342,7 +358,7 @@ input::placeholder {
     margin: 0 -6px;
 }
 
-.o-layout--gutter-sm > .o-layout__item {
+.o-layout--gutter-sm>.o-layout__item {
     padding: 0 6px;
 }
 
@@ -350,7 +366,7 @@ input::placeholder {
     margin: 0 calc(var(--global-whitespace) * -1);
 }
 
-.o-layout--gutter-lg > .o-layout__item {
+.o-layout--gutter-lg>.o-layout__item {
     padding: 0 var(--global-whitespace);
 }
 
@@ -358,7 +374,7 @@ input::placeholder {
     margin: 0 calc(var(--global-whitespace-lg) * -1);
 }
 
-.o-layout--gutter-xl > .o-layout__item {
+.o-layout--gutter-xl>.o-layout__item {
     padding: 0 var(--global-whitespace-lg);
 }
 
@@ -535,7 +551,7 @@ input::placeholder {
     background-color: White;
     margin-bottom: var(--global-whitespace);
     border-radius: var(--global-borderRadius);
-    box-shadow: 0 0 0 var(--global-borderWidth) rgba(0,0,0, 0.05), 0 2px 4px rgba(0,0,0,.075);
+    box-shadow: 0 0 0 var(--global-borderWidth) rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, .075);
     overflow: hidden;
 }
 
@@ -559,10 +575,10 @@ input::placeholder {
 
 /* This allows c-card__body and __footer to have equal padding everywhere */
 
-.c-card__body > *:last-child,
-.c-card__footer > *:last-child,
-.c-card__body > *:last-child > *:last-child,
-.c-card__footer > *:last-child > *:last-child {
+.c-card__body>*:last-child,
+.c-card__footer>*:last-child,
+.c-card__body>*:last-child>*:last-child,
+.c-card__footer>*:last-child>*:last-child {
     margin-bottom: 0;
 }
 
@@ -601,10 +617,10 @@ input::placeholder {
     -moz-appearance: none;
     appearance: none;
     width: 100%;
-    border: var(--global-borderWidth) solid var(--global-color-neutral-xxx-light);
+    border: var(--global-borderWidth) solid var(--global-input-borderColor);
     border-radius: var(--global-borderRadius);
-    color: var(--global-color-neutral-xxxx-dark);
-    background-color: White;
+    color: var(--global-input-color);
+    background-color: var(--global-input-backgroundColor);
     font-family: inherit;
     font-size: 16px;
     line-height: calc(var(--global-baseline) * 3);
@@ -614,13 +630,13 @@ input::placeholder {
 }
 
 .c-input:hover {
-    border-color: var(--global-color-neutral-xx-light);
+    border-color: var(--global-input-hover-borderColor);
 }
 
 .c-input:focus,
 .c-input:active {
-    border-color: var(--global-color-alpha);
-    box-shadow: 0 0 0 3px var(--global-color-alpha-x-transparent);
+    border-color: var(--global-input-focus-borderColor);
+    box-shadow: 0 0 0 3px var(--global-input-boxShadow);
 }
 
 /* option input for checkboxes and radio buttons */
@@ -630,6 +646,95 @@ input::placeholder {
 }
 
 /*
+    Component : custom options
+*/
+.c-custom-option__symbol{
+    opacity: 0;
+}
+.c-option--hidden:checked+.c-custom-option .c-custom-option__symbol {
+    /*
+      Do magic stuff here, for example:
+      fill: blue;
+    */
+    opacity: 1;
+    fill: var(--global-color-alpha-light);
+    -webkit-transition: all 200ms cubic-bezier(0.420, 0.000, 1.000, 1.000);
+    -moz-transition: all 200ms cubic-bezier(0.420, 0.000, 1.000, 1.000);
+    -o-transition: all 200ms cubic-bezier(0.420, 0.000, 1.000, 1.000);
+    transition: all 200ms cubic-bezier(0.420, 0.000, 1.000, 1.000);
+    border-color: blue;
+    /* ease-in */
+}
+
+
+
+.c-custom-option__symbol {
+    display: block;
+}
+
+.c-custom-option__fake-input--checkbox .c-custom-option__symbol {
+    width: 10px;
+    height: 10px;
+    fill: var(--global-color-alpha);
+}
+
+.c-custom-option__fake-input--radio .c-custom-option__symbol {
+    width: 6px;
+    height: 6px;
+    background-color: var(--global-color-alpha);
+    border-radius: 100%;
+}
+
+.c-custom-option__fake-input {
+    display: flex;
+    width: 16px;
+    height: 16px;
+    border: 1px solid;
+    border-color: var(--global-input-borderColor);
+    margin-right: 8px;
+    box-shadow: var(--global-input-color);
+}
+
+.c-custom-option__fake-input--checkbox {
+    border-radius: 3px;
+    align-items: center;
+    justify-content: center;
+}
+
+.c-custom-option__fake-input--radio {
+    border-radius: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.c-custom-option {
+    display: flex;
+}
+
+/*Een span element kan niet gefocussed worden dus zullen we weer de check gebruiken voor active en hover gebruiken we ook beter
+de checked functie*/
+.c-custom-option__fake-input:hover{
+    border-color: var(--global-color-alpha-light);
+}
+
+.c-custom-option__fake-input:active{
+    border-color: var(--global-color-alpha-light);
+}
+
+.c-option--hidden:checked+.c-custom-option .c-custom-option__fake-input--radio{
+    border-color: var(--global-color-alpha-light);
+}
+.c-option--hidden:checked+.c-custom-option .c-custom-option__fake-input--checkbox{
+    border-color: var(--global-color-alpha-light);
+}
+
+.c-option-list{
+    margin-bottom: 24px;
+}
+.c-option-list__item{
+    margin-bottom: 12px;
+}
+/*
     Component: Label
     ---
     Class to put on all form labels
@@ -638,7 +743,7 @@ input::placeholder {
 .c-label {
     margin-bottom: 0;
     font-size: 14px;
-    padding-bottom: var(--global-whitespace-xs);    
+    padding-bottom: var(--global-whitespace-xs);
     line-height: calc(var(--global-baseline) * 2);
     color: var(--global-color-neutral-xx-dark);
 }
@@ -845,33 +950,43 @@ input::placeholder {
     .u-1-of-2-bp1 {
         width: 50% !important;
     }
+
     .u-1-of-3-bp1 {
         width: 33.3333333333% !important;
     }
+
     .u-2-of-3-bp1 {
         width: 66.6666666667% !important;
     }
+
     .u-1-of-4-bp1 {
         width: 25% !important;
     }
+
     .u-3-of-4-bp1 {
         width: 75% !important;
     }
+
     .u-1-of-5-bp1 {
         width: 20% !important;
     }
+
     .u-2-of-5-bp1 {
         width: 40% !important;
     }
+
     .u-3-of-5-bp1 {
         width: 60% !important;
     }
+
     .u-4-of-5-bp1 {
         width: 80% !important;
     }
+
     .u-1-of-6-bp1 {
         width: 16.6666666667% !important;
     }
+
     .u-5-of-6-bp1 {
         width: 83.3333333333% !important;
     }
@@ -881,33 +996,43 @@ input::placeholder {
     .u-1-of-2-bp2 {
         width: 50% !important;
     }
+
     .u-1-of-3-bp2 {
         width: 33.3333333333% !important;
     }
+
     .u-2-of-3-bp2 {
         width: 66.6666666667% !important;
     }
+
     .u-1-of-4-bp2 {
         width: 25% !important;
     }
+
     .u-3-of-4-bp2 {
         width: 75% !important;
     }
+
     .u-1-of-5-bp2 {
         width: 20% !important;
     }
+
     .u-2-of-5-bp2 {
         width: 40% !important;
     }
+
     .u-3-of-5-bp2 {
         width: 60% !important;
     }
+
     .u-4-of-5-bp2 {
         width: 80% !important;
     }
+
     .u-1-of-6-bp2 {
         width: 16.6666666667% !important;
     }
+
     .u-5-of-6-bp2 {
         width: 83.3333333333% !important;
     }
@@ -917,33 +1042,43 @@ input::placeholder {
     .u-1-of-2-bp3 {
         width: 50% !important;
     }
+
     .u-1-of-3-bp3 {
         width: 33.3333333333% !important;
     }
+
     .u-2-of-3-bp3 {
         width: 66.6666666667% !important;
     }
+
     .u-1-of-4-bp3 {
         width: 25% !important;
     }
+
     .u-3-of-4-bp3 {
         width: 75% !important;
     }
+
     .u-1-of-5-bp3 {
         width: 20% !important;
     }
+
     .u-2-of-5-bp3 {
         width: 40% !important;
     }
+
     .u-3-of-5-bp3 {
         width: 60% !important;
     }
+
     .u-4-of-5-bp3 {
         width: 80% !important;
     }
+
     .u-1-of-6-bp3 {
         width: 16.6666666667% !important;
     }
+
     .u-5-of-6-bp3 {
         width: 83.3333333333% !important;
     }
@@ -953,33 +1088,43 @@ input::placeholder {
     .u-1-of-2-bp4 {
         width: 50% !important;
     }
+
     .u-1-of-3-bp4 {
         width: 33.3333333333% !important;
     }
+
     .u-2-of-3-bp4 {
         width: 66.6666666667% !important;
     }
+
     .u-1-of-4-bp4 {
         width: 25% !important;
     }
+
     .u-3-of-4-bp4 {
         width: 75% !important;
     }
+
     .u-1-of-5-bp4 {
         width: 20% !important;
     }
+
     .u-2-of-5-bp4 {
         width: 40% !important;
     }
+
     .u-3-of-5-bp4 {
         width: 60% !important;
     }
+
     .u-4-of-5-bp4 {
         width: 80% !important;
     }
+
     .u-1-of-6-bp4 {
         width: 16.6666666667% !important;
     }
+
     .u-5-of-6-bp4 {
         width: 83.3333333333% !important;
     }
@@ -1025,6 +1170,7 @@ No media query since this is the default in mobile first design
 */
 
 @media print {
+
     *,
     *:before,
     *:after {
@@ -1035,16 +1181,20 @@ No media query since this is the default in mobile first design
         box-shadow: none !important;
         text-shadow: none !important;
     }
+
     a,
     a:visited {
         text-decoration: underline;
     }
+
     a[href]:after {
-        content: " (" attr(href) ")";
+        content: " ("attr(href) ")";
     }
+
     abbr[title]:after {
-        content: " (" attr(title) ")";
+        content: " ("attr(title) ")";
     }
+
     /*
     * Don't show links that are fragment identifiers,
     * or use the `javascript:` pseudo protocol
@@ -1053,14 +1203,17 @@ No media query since this is the default in mobile first design
     a[href^="javascript:"]:after {
         content: "";
     }
+
     pre {
         white-space: pre-wrap !important;
     }
+
     pre,
     blockquote {
         border: 1px solid #999;
         page-break-inside: avoid;
     }
+
     /*
     * Printing Tables:
     * http://css-discuss.incutio.com/wiki/Printing_Tables
@@ -1068,16 +1221,19 @@ No media query since this is the default in mobile first design
     thead {
         display: table-header-group;
     }
+
     tr,
     img {
         page-break-inside: avoid;
     }
+
     p,
     h2,
     h3 {
         orphans: 3;
         widows: 3;
     }
+
     h2,
     h3 {
         page-break-after: avoid;
